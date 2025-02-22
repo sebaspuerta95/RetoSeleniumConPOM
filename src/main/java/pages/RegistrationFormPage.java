@@ -64,8 +64,9 @@ public class RegistrationFormPage {
         driver.findElement(numberField).sendKeys(mobileNumber);
     }
 
-    public void clickCreateAccountButton(){
+    public AccountCreatedPage clickCreateAccountButton(){
         driver.findElement(createAccButton).click();
+        return new AccountCreatedPage(driver);
     }
 
     private Select findDropdownElement(By selector){
