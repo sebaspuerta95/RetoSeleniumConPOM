@@ -19,4 +19,13 @@ public class SignupLoginPage {
         return driver.findElement(signUpMessage).getText();
     }
 
+    public void typeNameAndEmail (String name, String email){
+        driver.findElement(signUpNameField).sendKeys(name);
+        driver.findElement(signUpEmailField).sendKeys(email);
+    }
+
+    public void clickSignUpButton(){
+        driver.findElement(signUpButton).click();
+    }
+
 }
