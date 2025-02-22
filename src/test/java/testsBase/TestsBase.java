@@ -5,13 +5,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.HomePage;
 
 import java.time.Duration;
 
 public class TestsBase {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected HomePage homePage;
 
     @BeforeEach
     public void setUp(){
@@ -20,6 +22,7 @@ public class TestsBase {
         driver.manage().window().maximize();
         driver.get("https://automationexercise.com/");
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        homePage = new HomePage(driver);
     }
 
     @AfterEach
