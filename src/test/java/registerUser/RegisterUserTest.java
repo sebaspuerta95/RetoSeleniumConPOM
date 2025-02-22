@@ -3,6 +3,7 @@ package registerUser;
 import org.junit.jupiter.api.Test;
 import testsBase.TestsBase;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RegisterUserTest extends TestsBase {
@@ -13,7 +14,7 @@ public class RegisterUserTest extends TestsBase {
 
         String expectedSignUpMessage = "New User Signup!";
         assertTrue(signUpLoginPage.isSingUpMessageVisible(), "The Signup message is not visible on the screen.");
-        assertTrue(signUpLoginPage.getSignUpMessage().equals(expectedSignUpMessage), "The Sign Up message is incorrect.");
+        assertEquals(signUpLoginPage.getSignUpMessage(), expectedSignUpMessage, "The Sign Up message is incorrect.");
 
         String username = "Sebas95"; String email = "sebastian@gmail.com";
         signUpLoginPage.typeNameAndEmail(username, email);
@@ -21,7 +22,7 @@ public class RegisterUserTest extends TestsBase {
 
         String expectedEnterInfoMessage = "ENTER ACCOUNT INFORMATION";
         assertTrue(registrationFormPage.isEnterInfoMessageVisible(), "The Enter Account Information message is not visible on the screen.");
-        assertTrue(registrationFormPage.getEnterInfoMessage().equals(expectedEnterInfoMessage), "The Enter Acc Info message is incorrect.");
+        assertEquals(registrationFormPage.getEnterInfoMessage(), expectedEnterInfoMessage, "The Enter Acc Info message is incorrect.");
 
         String gender = "Male"; String password = "Pass123"; String day = "13"; String month = "August"; String year = "1995";
         String newsletter = "Yes"; String optin = "Yes"; String firstname = "Sebastian"; String lastname = "Puerta"; String company = "Sofka";
@@ -34,7 +35,7 @@ public class RegisterUserTest extends TestsBase {
 
         String expectedAccCreatedMessage = "ACCOUNT CREATED!";
         assertTrue(accountCreatedPage.isAccCreatedMessageVisible(), "The Account Created message is not visible.");
-        assertTrue(accountCreatedPage.getAccCreatedMessage(). equals(expectedAccCreatedMessage), "The Account Created message is incorrect.");
+        assertEquals(accountCreatedPage.getAccCreatedMessage(), expectedAccCreatedMessage, "The Account Created message is incorrect.");
         var landingPage = accountCreatedPage.clickContinueButton();
 
         assertTrue(landingPage.isLoggedUserVisible(), "The logged user message is not visible.");
@@ -43,7 +44,7 @@ public class RegisterUserTest extends TestsBase {
 
         String expectedAccDelMessage = "ACCOUNT DELETED!";
         assertTrue(accountDeletedPage.isAccDeletedMessageVisible(), "The Account Deleted message is not visible.");
-        assertTrue(accountDeletedPage.getAccDeletedMessage().equals(expectedAccDelMessage), "The Account Deleted message is incorrect.");
+        assertEquals(accountDeletedPage.getAccDeletedMessage(), expectedAccDelMessage, "The Account Deleted message is incorrect.");
         accountDeletedPage.clickContinueButton();
     }
 
