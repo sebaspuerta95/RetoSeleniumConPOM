@@ -24,8 +24,9 @@ public class SignupLoginPage {
         driver.findElement(signUpEmailField).sendKeys(email);
     }
 
-    public void clickSignUpButton(){
+    public RegistrationFormPage clickSignUpButton(){
         driver.findElement(signUpButton).click();
+        return new RegistrationFormPage(driver);
     }
 
 }
