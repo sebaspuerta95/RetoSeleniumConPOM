@@ -17,8 +17,9 @@ public class AccountCreatedPage {
         return driver.findElement(accountCreatedInfo).getText();
     }
 
-    public void clickContinueButton(){
+    public LandingPage clickContinueButton(){
         driver.findElement(continueButton).click();
+        return new LandingPage(driver);
     }
 
 }
