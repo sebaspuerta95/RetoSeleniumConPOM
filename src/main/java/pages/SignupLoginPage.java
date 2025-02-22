@@ -15,6 +15,10 @@ public class SignupLoginPage {
         this.driver = driver;
     }
 
+    public boolean isSingUpMessageVisible(){
+        return driver.findElement(signUpMessage).isDisplayed();
+    }
+
     public String getSignUpMessage (){
         return driver.findElement(signUpMessage).getText();
     }

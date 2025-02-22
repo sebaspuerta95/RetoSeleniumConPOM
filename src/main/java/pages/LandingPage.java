@@ -21,8 +21,9 @@ public class LandingPage {
         return driver.findElement(loggedUserButton).isDisplayed();
     }
 
-    public void clickDeleteAccountButton(){
+    public AccountDeletedPage clickDeleteAccountButton(){
         driver.findElement(deleteAccButton).click();
+        return new AccountDeletedPage(driver);
     }
 
 }

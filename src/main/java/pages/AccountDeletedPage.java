@@ -13,6 +13,10 @@ public class AccountDeletedPage {
         this.driver = driver;
     }
 
+    public boolean isAccDeletedMessageVisible(){
+        return driver.findElement(accountDeletedInfo).isDisplayed();
+    }
+
     public String getAccDeletedMessage(){
         return driver.findElement(accountDeletedInfo).getText();
     }

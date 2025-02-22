@@ -32,6 +32,10 @@ public class RegistrationFormPage {
         this.driver = driver;
     }
 
+    public boolean isEnterInfoMessageVisible(){
+        return driver.findElement(enterAccInfo).isDisplayed();
+    }
+
     public String getEnterInfoMessage (){
         return driver.findElement(enterAccInfo).getText();
     }

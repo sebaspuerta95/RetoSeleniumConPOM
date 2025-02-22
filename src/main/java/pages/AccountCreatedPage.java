@@ -13,6 +13,10 @@ public class AccountCreatedPage {
         this.driver = driver;
     }
 
+    public boolean isAccCreatedMessageVisible(){
+        return driver.findElement(accountCreatedInfo).isDisplayed();
+    }
+
     public String getAccCreatedMessage(){
         return driver.findElement(accountCreatedInfo).getText();
     }
