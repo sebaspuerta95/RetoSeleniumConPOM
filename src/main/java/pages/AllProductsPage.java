@@ -64,8 +64,9 @@ public class AllProductsPage {
         continueShoppingModalButton.click();
     }
 
-    public void clickViewCartModalButton(){
+    public ViewCartPage clickViewCartModalButton(){
         viewCartModalButton.click();
+        return new ViewCartPage(driver);
     }
 
 }
