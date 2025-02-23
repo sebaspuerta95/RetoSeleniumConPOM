@@ -32,16 +32,20 @@ public class ViewCartPage {
         return cartProductsList.size();
     }
 
-    public String getProductPrice(int index){
-        return cartPricesList.get(index).getText();
+    public int getProductPrice(int index){
+        String priceInString = cartPricesList.get(index).getText();
+        return Integer.parseInt(priceInString);
     }
 
-    public String getProductQuantity(int index){
-        return cartQuantitiesList.get(index).getText();
+    public int getProductQuantity(int index){
+        String quantityInString = cartQuantitiesList.get(index).getText();
+        return Integer.parseInt(quantityInString);
     }
 
-    public String getTotalPrice(int index){
-        return totalPricesList.get(index).getText();
+    public int getTotalPrice(int index){
+        String totalPriceInString = totalPricesList.get(index).getText();
+        String totalPriceNumbers = totalPriceInString.replaceAll("[^0-9]", "");
+        return Integer.parseInt(totalPriceNumbers);
     }
 
 }
