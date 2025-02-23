@@ -22,6 +22,7 @@ public class AddProductsInCartTest extends TestsBase {
         allProductsPage.hoverOverProduct(secondProduct);
         allProductsPage.clickOverlayingAddToCartButton(secondProduct);
         var viewCartPage = allProductsPage.clickViewCartModalButton();
+        viewCartPage.scrollIntoCart();
 
         int expectedProductsInCart = 2;
         assertEquals(expectedProductsInCart, viewCartPage.getNumberOfProductsAdded(), "The number of products added in the cart was incorrect.");

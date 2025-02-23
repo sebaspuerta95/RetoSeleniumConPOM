@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,6 +24,9 @@ public class ViewCartPage {
     @FindBy(xpath = "//td[@class='cart_total']/p")
     private List<WebElement> totalPricesList;
 
+    @FindBy(id = "cart_info_table")
+    private WebElement cartInfoTable;
+
     public ViewCartPage (WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -34,7 +38,8 @@ public class ViewCartPage {
 
     public int getProductPrice(int index){
         String priceInString = cartPricesList.get(index).getText();
-        return Integer.parseInt(priceInString);
+        String numericValue = priceInString.replaceAll("\\D", "");
+        return Integer.parseInt(numericValue);
     }
 
     public int getProductQuantity(int index){
@@ -46,6 +51,11 @@ public class ViewCartPage {
         String totalPriceInString = totalPricesList.get(index).getText();
         String totalPriceNumbers = totalPriceInString.replaceAll("[^0-9]", "");
         return Integer.parseInt(totalPriceNumbers);
+    }
+
+    public void scrollIntoCart(){
+        String script = "arguments[0].scrollIntoView();";
+        ((JavascriptExecutor) driver).executeScript(script, cartInfoTable);
     }
 
 }
