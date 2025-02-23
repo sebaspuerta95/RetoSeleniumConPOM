@@ -7,6 +7,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class AllProductsPage {
 
     private WebDriver driver;
@@ -17,10 +19,10 @@ public class AllProductsPage {
     private WebElement viewProductButton;
 
     @FindBy(xpath = "//div[@class='single-products']")
-    private WebElement productBody;
+    private List<WebElement> productBodies;
 
     @FindBy(xpath = "//div[@class='product-overlay']//a[@class='btn btn-default add-to-cart']")
-    private WebElement overlayingAddToCartButton;
+    private List<WebElement> overlayingAddToCartButtons;
 
     @FindBy(xpath = "//div[@class='modal-body']/p/a")
     private WebElement viewCartModalButton;
@@ -51,13 +53,13 @@ public class AllProductsPage {
         ((JavascriptExecutor)driver).executeScript(script,allProductsList);
     }
 
-    public void hoverOverProduct(){
+    public void hoverOverProduct(int index){
         Actions actions = new Actions(driver);
-        actions.moveToElement(productBody).perform();
+        actions.moveToElement(productBodies.get(index)).perform();
     }
 
-    public void clickOverlayingAddToCartButton(){
-        overlayingAddToCartButton.click();
+    public void clickOverlayingAddToCartButton(int index){
+        overlayingAddToCartButtons.get(index).click();
     }
 
     public void clickContinueShoppingModalButton(){
