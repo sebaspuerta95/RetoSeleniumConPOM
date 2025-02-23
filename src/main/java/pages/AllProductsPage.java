@@ -25,8 +25,9 @@ public class AllProductsPage {
         return allProductsList.isDisplayed();
     }
 
-    public void clickViewProductButtonOfFirstProductVisible(){
+    public ProductDetailsPage clickViewProductButtonOfFirstProductVisible(){
         viewProductButton.click();
+        return new ProductDetailsPage(driver);
     }
 
 
