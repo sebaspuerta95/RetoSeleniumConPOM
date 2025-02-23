@@ -6,7 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class AllProductsPage {
@@ -29,6 +33,9 @@ public class AllProductsPage {
 
     @FindBy(xpath = "//div[@class='modal-footer']/button")
     private WebElement continueShoppingModalButton;
+
+    @FindBy(xpath = "//div[@class='modal-content']")
+    private WebElement modalContent;
 
     public AllProductsPage (WebDriver driver){
         this.driver = driver;
@@ -63,12 +70,19 @@ public class AllProductsPage {
     }
 
     public void clickContinueShoppingModalButton(){
+        modalScreenWait();
         continueShoppingModalButton.click();
     }
 
     public ViewCartPage clickViewCartModalButton(){
+        modalScreenWait();
         viewCartModalButton.click();
         return new ViewCartPage(driver);
+    }
+
+    private void modalScreenWait(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(modalContent));
     }
 
 }

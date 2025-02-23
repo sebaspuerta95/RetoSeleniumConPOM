@@ -10,6 +10,7 @@ public class AddProductsInCartTest extends TestsBase {
     @Test
     public void testAddProductsInCart(){
         var allProductsPage = homePage.clickProductsButton();
+        allProductsPage.scrollIntoProductsList();
 
         int firstProduct = 0;
         int secondProduct = 1;
