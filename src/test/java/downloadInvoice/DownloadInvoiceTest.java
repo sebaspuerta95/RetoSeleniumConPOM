@@ -3,6 +3,8 @@ package downloadInvoice;
 import org.junit.jupiter.api.Test;
 import testsBase.TestsBase;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class DownloadInvoiceTest extends TestsBase {
 
     @Test
@@ -23,8 +25,11 @@ public class DownloadInvoiceTest extends TestsBase {
 
         var viewCartPage = allProductsPage.clickViewCartNavBarButton();
         viewCartPage.scrollIntoCart();
+        String expectedViewCartPageTitle = "Automation Exercise - Checkout";
+        assertEquals(expectedViewCartPageTitle, viewCartPage.getViewCartTitle(), "The test didn't faill into the view cart page.");
 
-
+        viewCartPage.clickProceedToCheckoutButton();
+        var signupLoginPage = viewCartPage.clickRegisterLoginModalButton();
 
     }
 
