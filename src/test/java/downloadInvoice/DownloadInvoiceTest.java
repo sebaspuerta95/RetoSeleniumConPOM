@@ -45,8 +45,10 @@ public class DownloadInvoiceTest extends TestsBase {
         checkoutPage.typeInCommentArea(comment);
 
         var paymentDetailsPage = checkoutPage.clickPlaceOrderButton();
+        String nameOnCard = "Sebastian P"; String cardNumber = "1234"; String cvc = "123"; String expMonth = "01"; String expYear = "2030";
+        paymentDetailsPage.typePaymentInformation(nameOnCard, cardNumber, cvc, expMonth, expYear);
 
-
+        paymentDetailsPage.clickPayAndConfirmOrderButton();
 
     }
 
