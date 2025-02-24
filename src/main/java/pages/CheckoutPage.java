@@ -37,8 +37,9 @@ public class CheckoutPage {
         commentArea.sendKeys(comment);
     }
 
-    public void clickPlaceOrderButton(){
+    public PaymentDetailsPage clickPlaceOrderButton(){
         placeOrderButton.click();
+        return new PaymentDetailsPage(driver);
     }
 
 }

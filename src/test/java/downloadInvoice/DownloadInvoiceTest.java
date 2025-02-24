@@ -39,6 +39,12 @@ public class DownloadInvoiceTest extends TestsBase {
         viewCartPage = landingPage.clickViewCartNavBarButton();
 
         var checkoutPage = viewCartPage.clickProceedToCheckoutButtonLoggedUser();
+        assertTrue(checkoutPage.isAddressDetailsLabelVisible(), "The address details are not present.");
+        assertTrue(checkoutPage.isReviewOrderLabelVisible(), "The details of the order are not available in the screen.");
+        String comment = "Very good puchase.";
+        checkoutPage.typeInCommentArea(comment);
+
+        var paymentDetailsPage = checkoutPage.clickPlaceOrderButton();
 
 
 
