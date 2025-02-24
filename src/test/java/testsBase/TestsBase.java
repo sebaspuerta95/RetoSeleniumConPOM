@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.HomePage;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.HashMap;
 
@@ -32,9 +33,9 @@ public class TestsBase {
         //driver.quit();
     }
 
-    private ChromeOptions driverConfiguration(){
+    private ChromeOptions driverConfiguration() {
         HashMap<String, Object> chromePrefs = new HashMap<>();
-        chromePrefs.put("download.default_directory", "src/test/resources/invoices");
+        chromePrefs.put("download.default_directory", "C:\\Users\\sebas\\Downloads");
         chromePrefs.put("download.prompt_for_download", false);
         chromePrefs.put("download.directory_upgrade", true);
         chromePrefs.put("safebrowsing.enabled", true);

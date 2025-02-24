@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class LandingPage {
 
     private WebDriver driver;
-    @FindBy (xpath = "\"//a[contains(text(), 'Logged in as')]/b\"")
+    @FindBy (xpath = "//a[contains(text(), 'Logged in as')]/b")
     private WebElement loggedUserButton;
 
     @FindBy (xpath = "//a[@href='/delete_account']")

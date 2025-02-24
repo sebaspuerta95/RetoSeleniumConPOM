@@ -31,7 +31,7 @@ public class DownloadInvoiceTest extends TestsBase {
 
         viewCartPage.clickProceedToCheckoutButtonNotLoggedUser();
         var signupLoginPage = viewCartPage.clickRegisterLoginModalButton();
-        String email = "sepuerta@gmail.com"; String password = "password123"; String username = "Sebas95";
+        String email = "sepuertabe@gmail.com"; String password = "password123"; String username = "Sebas95";
         signupLoginPage.typeLoginEmailAndPassword(email, password);
 
         var landingPage = signupLoginPage.clickLoginButton();
@@ -41,7 +41,7 @@ public class DownloadInvoiceTest extends TestsBase {
         var checkoutPage = viewCartPage.clickProceedToCheckoutButtonLoggedUser();
         assertTrue(checkoutPage.isAddressDetailsLabelVisible(), "The address details are not present.");
         assertTrue(checkoutPage.isReviewOrderLabelVisible(), "The details of the order are not available in the screen.");
-        String comment = "Very good puchase.";
+        String comment = "Very good purchase.";
         checkoutPage.typeInCommentArea(comment);
 
         var paymentDetailsPage = checkoutPage.clickPlaceOrderButton();
@@ -53,7 +53,7 @@ public class DownloadInvoiceTest extends TestsBase {
         assertEquals(expectedConfirmationMessage, orderPlacedPage.getOrderConfirmationMessage(), "The confirmation message displayed was incorrect.");
 
         orderPlacedPage.clickDownloadInvoiceButton();
-        String downloadPath = "src/test/resources/invoices";
+        String downloadPath = "C:\\Users\\sebas\\Downloads";
         String expectedFileName = "invoice.txt";
         assertTrue(orderPlacedPage.isInvoiceDownloaded(downloadPath, expectedFileName), "The invoice wasn't downloaded as expected.");
 
