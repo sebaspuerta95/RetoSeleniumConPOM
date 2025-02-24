@@ -1,29 +1,34 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class AccountDeletedPage {
 
     private WebDriver driver;
-    private By accountDeletedInfo = By.xpath("//b[text()='Account Deleted!']");
-    private By continueButton = By.xpath("//a[text()='Continue']");
+    @FindBy (xpath = "//b[text()='Account Deleted!']")
+    private WebElement accountDeletedInfo;
+
+    @FindBy (xpath = "//a[text()='Continue']")
+    private WebElement continueButton;
 
     public AccountDeletedPage (WebDriver driver){
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public boolean isAccDeletedMessageVisible(){
-        return driver.findElement(accountDeletedInfo).isDisplayed();
+        return accountDeletedInfo.isDisplayed();
     }
 
     public String getAccDeletedMessage(){
-        return driver.findElement(accountDeletedInfo).getText();
+        return accountDeletedInfo.getText();
     }
 
-    public HomePage clickContinueButton(){
-        driver.findElement(continueButton).click();
-        return new HomePage(driver);
+    public void clickContinueButton(){
+        continueButton.click();
     }
 
 }

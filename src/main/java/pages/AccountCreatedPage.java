@@ -1,28 +1,34 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class AccountCreatedPage {
 
     private WebDriver driver;
-    private By accountCreatedInfo = By.xpath("//b[text()='Account Created!']");
-    private By continueButton = By.xpath("//a[text()='Continue']");
+    @FindBy (xpath = "//b[text()='Account Created!']")
+    private WebElement accountCreatedInfo;
+
+    @FindBy (xpath = "//a[text()='Continue']")
+    private WebElement continueButton;
 
     public AccountCreatedPage (WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public boolean isAccCreatedMessageVisible(){
-        return driver.findElement(accountCreatedInfo).isDisplayed();
+        return accountCreatedInfo.isDisplayed();
     }
 
     public String getAccCreatedMessage(){
-        return driver.findElement(accountCreatedInfo).getText();
+        return accountCreatedInfo.getText();
     }
 
     public LandingPage clickContinueButton(){
-        driver.findElement(continueButton).click();
+        continueButton.click();
         return new LandingPage(driver);
     }
 
