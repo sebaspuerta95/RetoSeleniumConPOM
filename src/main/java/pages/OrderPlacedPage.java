@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.File;
+
 public class OrderPlacedPage {
 
     private WebDriver driver;
@@ -28,6 +30,29 @@ public class OrderPlacedPage {
 
     public void clickDownloadInvoiceButton(){
         downloadInvoiceButton.click();
+    }
+
+    public boolean isInvoiceDownloaded(String downloadPath, String fileName){
+        File file = new File(downloadPath + "\\" + fileName);
+        int waitTime = 10;
+
+        while (waitTime > 0) {
+            if (file.exists()) {
+                return true;
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            waitTime--;
+        }
+        return false;
+    }
+
+    public LandingPage clickContinueButton(){
+        continueButton.click();
+        return new LandingPage(driver);
     }
 
 }

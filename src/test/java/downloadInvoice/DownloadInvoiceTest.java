@@ -52,6 +52,13 @@ public class DownloadInvoiceTest extends TestsBase {
         String expectedConfirmationMessage = "Congratulations! Your order has been confirmed!";
         assertEquals(expectedConfirmationMessage, orderPlacedPage.getOrderConfirmationMessage(), "The confirmation message displayed was incorrect.");
 
+        orderPlacedPage.clickDownloadInvoiceButton();
+        String downloadPath = "src/test/resources/invoices";
+        String expectedFileName = "invoice.txt";
+        assertTrue(orderPlacedPage.isInvoiceDownloaded(downloadPath, expectedFileName), "The invoice wasn't downloaded as expected.");
+
+        landingPage = orderPlacedPage.clickContinueButton();
+
 
     }
 
