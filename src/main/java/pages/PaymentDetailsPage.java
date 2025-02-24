@@ -39,8 +39,9 @@ public class PaymentDetailsPage {
         expYearField.sendKeys(expYear);
     }
 
-    public void clickPayAndConfirmOrderButton(){
+    public OrderPlacedPage clickPayAndConfirmOrderButton(){
         payAndConfirmOrderButton.click();
+        return new OrderPlacedPage(driver);
     }
 
 }
