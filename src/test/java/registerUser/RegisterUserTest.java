@@ -17,7 +17,7 @@ public class RegisterUserTest extends TestsBase {
         assertEquals(signUpLoginPage.getSignUpMessage(), expectedSignUpMessage, "The Sign Up message is incorrect.");
 
         String username = "Sebas95"; String email = "sebastian@gmail.com";
-        signUpLoginPage.typeNameAndEmail(username, email);
+        signUpLoginPage.typeSignUpNameAndEmail(username, email);
         var registrationFormPage = signUpLoginPage.clickSignUpButton();
 
         String expectedEnterInfoMessage = "ENTER ACCOUNT INFORMATION";

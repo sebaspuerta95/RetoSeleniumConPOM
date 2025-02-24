@@ -12,6 +12,12 @@ public class ViewCartPage {
 
     private WebDriver driver;
 
+    @FindBy(xpath = "//a[text()='Proceed To Checkout']")
+    private WebElement proceedToCheckoutButton;
+
+    @FindBy(xpath = "//div[@class='modal-body']/p/a")
+    private WebElement registerLoginModalButton;
+
     @FindBy(xpath = "//tbody/tr")
     private List<WebElement> cartProductsList;
 
@@ -30,6 +36,10 @@ public class ViewCartPage {
     public ViewCartPage (WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public String getViewCartTitle(){
+        return driver.getTitle();
     }
 
     public int getNumberOfProductsAdded(){
@@ -56,6 +66,20 @@ public class ViewCartPage {
     public void scrollIntoCart(){
         String script = "arguments[0].scrollIntoView();";
         ((JavascriptExecutor) driver).executeScript(script, cartInfoTable);
+    }
+
+    public void clickProceedToCheckoutButtonNotLoggedUser(){
+        proceedToCheckoutButton.click();
+    }
+
+    public CheckoutPage clickProceedToCheckoutButtonLoggedUser(){
+        proceedToCheckoutButton.click();
+        return new CheckoutPage(driver);
+    }
+
+    public SignupLoginPage clickRegisterLoginModalButton(){
+        registerLoginModalButton.click();
+        return new SignupLoginPage(driver);
     }
 
 }
