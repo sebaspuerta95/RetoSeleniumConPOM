@@ -68,8 +68,13 @@ public class ViewCartPage {
         ((JavascriptExecutor) driver).executeScript(script, cartInfoTable);
     }
 
-    public void clickProceedToCheckoutButton(){
+    public void clickProceedToCheckoutButtonNotLoggedUser(){
         proceedToCheckoutButton.click();
+    }
+
+    public CheckoutPage clickProceedToCheckoutButtonLoggedUser(){
+        proceedToCheckoutButton.click();
+        return new CheckoutPage(driver);
     }
 
     public SignupLoginPage clickRegisterLoginModalButton(){
