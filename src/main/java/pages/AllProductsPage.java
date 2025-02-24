@@ -16,6 +16,9 @@ import java.util.List;
 public class AllProductsPage {
 
     private WebDriver driver;
+    @FindBy(xpath = "//ul/li/a[@href='/view_cart']")
+    private WebElement viewCartButton;
+
     @FindBy(xpath = "//div[@class='features_items']")
     private WebElement allProductsList;
 
@@ -83,6 +86,11 @@ public class AllProductsPage {
     private void modalScreenWait(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(modalContent));
+    }
+
+    public ViewCartPage clickViewCartNavBarButton(){
+        viewCartButton.click();
+        return new ViewCartPage(driver);
     }
 
 }
