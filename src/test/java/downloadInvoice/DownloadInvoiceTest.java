@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import testsBase.TestsBase;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DownloadInvoiceTest extends TestsBase {
 
@@ -30,6 +31,15 @@ public class DownloadInvoiceTest extends TestsBase {
 
         viewCartPage.clickProceedToCheckoutButton();
         var signupLoginPage = viewCartPage.clickRegisterLoginModalButton();
+        String email = "sepuerta@gmail.com"; String password = "password123"; String username = "Sebas95";
+        signupLoginPage.typeLoginEmailAndPassword(email, password);
+
+        var landingPage = signupLoginPage.clickLoginButton();
+        assertTrue(landingPage.getLoggedUser().contains(username), "The landing page doesn't contain the correct username");
+
+        viewCartPage = landingPage.clickViewCartNavBarButton();
+        viewCartPage.clickProceedToCheckoutButton();
+
 
     }
 
