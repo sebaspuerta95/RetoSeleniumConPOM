@@ -58,8 +58,7 @@ public class DownloadInvoiceTest extends TestsBase {
         assertTrue(orderPlacedPage.isInvoiceDownloaded(downloadPath, expectedFileName), "The invoice wasn't downloaded as expected.");
 
         landingPage = orderPlacedPage.clickContinueButton();
-
-
+        landingPage.clickLogoutButton();
     }
 
 }

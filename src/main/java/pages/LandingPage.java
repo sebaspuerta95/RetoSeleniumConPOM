@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +16,9 @@ public class LandingPage {
 
     @FindBy(xpath = "//ul/li/a[@href='/view_cart']")
     private WebElement viewCartButton;
+
+    @FindBy (xpath = "//a[@href='/logout']")
+    private WebElement logoutButton;
 
     public LandingPage(WebDriver driver) {
         this.driver = driver;
@@ -39,6 +41,10 @@ public class LandingPage {
     public ViewCartPage clickViewCartNavBarButton(){
         viewCartButton.click();
         return new ViewCartPage(driver);
+    }
+
+    public void clickLogoutButton(){
+        logoutButton.click();
     }
 
 }
